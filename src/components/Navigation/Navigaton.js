@@ -6,18 +6,19 @@ import cart from './../../img/cart.svg'
 
 const Navigation = () => {
    return (
-      <div>
+      <div className={s.nav}>
          <Link to="/">
-            <h2>Shopping Cart</h2>
+            <h2 className={s.nav_logo}>SHOPPING CART</h2>
          </Link>
          <Link to="/cart">
-            <div>
-               <h3>Cart</h3>
+            <div className={s.nav_cart}>
+               <h3 className={s.cart_title}>Cart</h3>
                <img
+                  className={s.cart_img}
                   src={cart}
                   alt="shopping cart"
                />
-               <div>0</div>
+               <div className={s.cart_count}>1</div>
             </div>
          </Link>
       </div>

@@ -5,7 +5,7 @@ import Product from "./Product/Product";
 
 const Products = () => {
    return (
-      <div>
+      <div className={s.products}>
          <Product />
       </div>
    );

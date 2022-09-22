@@ -12,19 +12,19 @@ const item = {
 
 const Cart = () => {
    return (
-      <div>
-         <div>
+      <div className={s.cart}>
+         <div className={s.cart_item}>
             <CartItem key={item.id} item={item} />
          </div>
-         <div>
-            <h4>Cart Summary</h4>
-            <div>
+         <div className={s.cart_sum}>
+            <h4 className={s.sum_title}>Cart Summary</h4>
+            <div className={s.sum_price}>
                <span>
                   TOTAL: (1 item)
                </span>
                <span>$ 10.00</span>
             </div>
-            <button>
+            <button className={s.sum_btn}>
                Proceed To Checkout
             </button>
          </div>
