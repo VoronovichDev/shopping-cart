@@ -4,15 +4,15 @@ import s from "./Product.module.scss";
 import testImg from '../../../img/test-img.jpg'
 
 
-const Product = () => {
+const Product = ({ productData }) => {
    return (
       <div className={s.prod}>
-         <img className={s.prod_img} src={testImg} alt="t-shirt" />
+         <img className={s.prod_img} src={productData.image} alt={productData.title} />
 
          <div className={s.prod_info}>
-            <p className={s.info_title}>T-shirt</p>
-            <p className={s.info_desc}>Nice t-shirt - some text for description. Nice t-shirt - some text for description. Nice t-shirt - some text for description.</p>
-            <p className={s.info_price}>$ 10.00</p>
+            <p className={s.info_title}>{productData.title}</p>
+            <p className={s.info_desc}>{productData.description}</p>
+            <p className={s.info_price}>$ {productData.price}</p>
          </div>
 
          <div className={s.prod_btns}>
