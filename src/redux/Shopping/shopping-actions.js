@@ -1,6 +1,6 @@
 import * as acitonTypes from './shopping-types'
 
-export const addToCard = (itemID) => {
+export const addToCart = (itemID) => {
    return {
       type: acitonTypes.ADD_TO_CART,
       payload: {

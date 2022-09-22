@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import s from "./Product.module.scss";
 import testImg from '../../../img/test-img.jpg'
 
+import { connect } from 'react-redux'
+import { addToCart } from '../../../redux/Shopping/shopping-actions'
 
-const Product = ({ productData }) => {
+const Product = ({ productData, addToCart }) => {
    return (
       <div className={s.prod}>
          <img className={s.prod_img} src={productData.image} alt={productData.title} />
@@ -21,7 +23,7 @@ const Product = ({ productData }) => {
                   View Item
                </button>
             </Link>
-            <button className={`${s.btns_btn} ${s.btns_add}`}>
+            <button onClick={() => addToCart(productData.id)} className={`${s.btns_btn} ${s.btns_add}`}>
                Add To Cart
             </button>
          </div>
@@ -29,4 +31,10 @@ const Product = ({ productData }) => {
    );
 };
 
-export default Product;
+const mapDispatchToProps = dispatch => {
+   return {
+      addToCart: (id) => dispatch(addToCart(id))
+   }
+}
+
+export default connect(null, mapDispatchToProps)(Product);
