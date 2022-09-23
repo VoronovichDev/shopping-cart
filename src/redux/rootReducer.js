@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import shopReducer from './Shopping/shopping-reducer'
+import shopReducerToolKit from './Shopping/shopping-reducer'
 
 const rootReducer = combineReducers({
-   shop: shopReducer
+   shop: shopReducerToolKit
 })
 
 export default rootReducer

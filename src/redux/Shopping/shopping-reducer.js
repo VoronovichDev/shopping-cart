@@ -6,7 +6,9 @@ import home_bars from "../../img/home_bars.jpg"
 import kettlebell from "../../img/kettlebell.jpg"
 import hand_trainer from "../../img/hand_trainer.jpg"
 import treadmill from "../../img/treadmill.jpg"
-
+import { createReducer } from '@reduxjs/toolkit'
+//==========
+import * as actions from './shopping-actions'
 const INITIAL_STATE = {
    products: [
       {
@@ -69,45 +71,73 @@ const INITIAL_STATE = {
    currentItem: null
 }
 
-const shopReducer = (state = INITIAL_STATE, action) => {
-   switch (action.type) {
-      case actionTypes.ADD_TO_CART:
+const shopReducerToolKit = createReducer(INITIAL_STATE, {
+   [actions.addToCart]: (state, action) => {
 
-         //Get the item's data from the products array
-         const item = state.products.find(prod => prod.id === action.payload.id)
+      const item = state.products.find(prod => prod.id === action.payload.id)
 
-         // Check if the item is already in cart
-         const inCart = state.cart.find(item => item.id === action.payload.id ? true : false)
+      const inCart = state.cart.find(item => item.id === action.payload.id ? true : false)
 
-         return {
-            ...state,
-            cart: inCart
-               ? state.cart.map(item => item.id === action.payload.id
-                  ? { ...item, qty: +item.qty + 1 }
-                  : item)
-               : [...state.cart, { ...item, qty: 1 }]
-         }
-      case actionTypes.REMOVE_FROM_CART:
-         return {
-            ...state,
-            cart: state.cart.filter(item => item.id !== action.payload.id),
-         }
-      case actionTypes.EDIT_QUANTITY:
-         return {
-            ...state,
-            cart:
-               state.cart.map(item => item.id === action.payload.id
-                  ? { ...item, qty: +action.payload.qty <= 0 || action.payload.qty === '' ? '' : +action.payload.qty }
-                  : item)
-         }
-      case actionTypes.LOAD_CURRENT_ITEM:
-         return {
-            ...state,
-            currentItem: action.payload
-         }
-      default:
-         return state
-   }
-}
+      state.cart = inCart
+         ? state.cart.map(item => item.id === action.payload.id
+            ? { ...item, qty: +item.qty + 1 }
+            : item)
+         : [...state.cart, { ...item, qty: 1 }]
 
-export default shopReducer
+   },
+   [actions.removeFromCart]: (state, action) => {
+      state.cart = state.cart.filter(item => item.id !== action.payload.id)
+   },
+   [actions.editQuantity]: (state, action) => {
+      state.cart =
+         state.cart.map(item => item.id === action.payload.id
+            ? { ...item, qty: +action.payload.qty <= 0 || action.payload.qty === '' ? '' : +action.payload.qty }
+            : item)
+   },
+   [actions.loadCurrentItem]: (state, action) => {
+      state.currentItem = action.payload
+   },
+})
+
+// const shopReducer = (state = INITIAL_STATE, action) => {
+//    switch (action.type) {
+//       case actionTypes.ADD_TO_CART:
+
+//          //Get the item's data from the products array
+//          const item = state.products.find(prod => prod.id === action.payload.id)
+
+//          // Check if the item is already in cart
+//          const inCart = state.cart.find(item => item.id === action.payload.id ? true : false)
+
+//          return {
+//             ...state,
+//             cart: inCart
+//                ? state.cart.map(item => item.id === action.payload.id
+//                   ? { ...item, qty: +item.qty + 1 }
+//                   : item)
+//                : [...state.cart, { ...item, qty: 1 }]
+//          }
+//       case actionTypes.REMOVE_FROM_CART:
+//          return {
+//             ...state,
+//             cart: state.cart.filter(item => item.id !== action.payload.id),
+//          }
+//       case actionTypes.EDIT_QUANTITY:
+//          return {
+//             ...state,
+//             cart:
+//                state.cart.map(item => item.id === action.payload.id
+//                   ? { ...item, qty: +action.payload.qty <= 0 || action.payload.qty === '' ? '' : +action.payload.qty }
+//                   : item)
+//          }
+//       case actionTypes.LOAD_CURRENT_ITEM:
+//          return {
+//             ...state,
+//             currentItem: action.payload
+//          }
+//       default:
+//          return state
+//    }
+// }
+
+export default shopReducerToolKit
