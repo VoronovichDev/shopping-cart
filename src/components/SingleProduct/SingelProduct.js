@@ -2,22 +2,39 @@ import React from "react";
 import s from './SingleProduct.module.scss'
 import testImg from '../../img/test-img.jpg'
 
-const SingelProduct = () => {
+import { connect } from "react-redux";
+import { addToCart } from "../../redux/Shopping/shopping-actions";
+
+const SingelProduct = ({ currentItem, addToCart }) => {
    return (
       <div className={s.singleProd}>
          <img
             className={s.singleProd_img}
-            src={testImg}
-            alt="T-shirt" />
+            src={currentItem.image}
+            alt={currentItem.title} />
          <div className={s.singleProd_info}>
-            <p className={s.info_title}>T-shirt SINGLE PRODUCT</p>
-            <p className={s.info_desc}>Description SINGLE PRODUCT Description SINGLE PRODUCT Description SINGLE PRODUCT Description SINGLE PRODUCT</p>
-            <p className={s.info_price}>$ 10.00  SINGLE PRODUCT</p>
+            <p className={s.info_title}>{currentItem.title}</p>
+            <p className={s.info_desc}>{currentItem.description}</p>
+            <p className={s.info_price}>$ {currentItem.price}</p>
 
-            <button className={s.info_addBtn}>Add To Cart</button>
+            <button
+               onClick={() => addToCart(currentItem.id)}
+               className={s.info_addBtn}>Add To Cart</button>
          </div>
       </div>
    )
 }
 
-export default SingelProduct
+const mapStateToProps = state => {
+   return {
+      currentItem: state.shop.currentItem
+   }
+}
+
+const mapDispatchToProps = dispatch => {
+   return {
+      addToCart: (id) => dispatch(addToCart(id))
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingelProduct) 

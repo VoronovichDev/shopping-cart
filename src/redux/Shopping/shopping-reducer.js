@@ -16,13 +16,15 @@ const INITIAL_STATE = {
          price: 45.0,
          image: dumbbells
       },
+
       {
          id: 2,
-         title: "Barbell",
-         description: "Something like a dumbbell, but bigger and heavier",
-         price: 90.0,
-         image: barbell
+         title: "Kettlebell",
+         description: "Heavy metal ball",
+         price: 20.0,
+         image: kettlebell
       },
+
       {
          id: 3,
          title: "Horizontal bar",
@@ -30,6 +32,7 @@ const INITIAL_STATE = {
          price: 70.0,
          image: horizontal_bar
       },
+
       {
          id: 4,
          title: "Home bars",
@@ -37,13 +40,15 @@ const INITIAL_STATE = {
          price: 30.0,
          image: home_bars
       },
+
       {
          id: 5,
-         title: "Kettlebell",
-         description: "Heavy metal ball",
-         price: 20.0,
-         image: kettlebell
+         title: "Barbell",
+         description: "Something like a dumbbell, but bigger and heavier",
+         price: 90.0,
+         image: barbell
       },
+
       {
          id: 6,
          title: "Hand trainer",
@@ -53,7 +58,7 @@ const INITIAL_STATE = {
       },
       {
          id: 7,
-         title: "Hand trainer",
+         title: "Treadmill",
          description: "It costs more than the entire assortment of the store. We highly recommend that you purchase this extreamly useful trainer.",
          price: 980.0,
          image: treadmill

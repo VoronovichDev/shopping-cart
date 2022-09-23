@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import s from "./Product.module.scss";
-import testImg from '../../../img/test-img.jpg'
 
 import { connect } from 'react-redux'
-import { addToCart } from '../../../redux/Shopping/shopping-actions'
+import { addToCart, loadCurrentItem } from '../../../redux/Shopping/shopping-actions'
 
-const Product = ({ productData, addToCart }) => {
+const Product = ({ productData, addToCart, loadCurrentItem }) => {
    return (
       <div className={s.prod}>
          <img className={s.prod_img} src={productData.image} alt={productData.title} />
@@ -18,8 +17,10 @@ const Product = ({ productData, addToCart }) => {
          </div>
 
          <div className={s.prod_btns}>
-            <Link to={`/product/111`}>
-               <button className={`${s.btns_btn} ${s.btns_view}`}>
+            <Link to={`/product/${productData.id}`}>
+               <button
+                  onClick={() => loadCurrentItem(productData)}
+                  className={`${s.btns_btn} ${s.btns_view}`}>
                   View Item
                </button>
             </Link>
@@ -33,7 +34,8 @@ const Product = ({ productData, addToCart }) => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      addToCart: (id) => dispatch(addToCart(id))
+      addToCart: (id) => dispatch(addToCart(id)),
+      loadCurrentItem: (item) => dispatch(loadCurrentItem(item))
    }
 }
 
