@@ -1,25 +1,26 @@
 import React from "react";
 import s from './CartItem.module.scss';
 import deleteBtn from '../../../img/delete.svg'
+import tshirt from '../../../img/test-img.jpg'
 
-const CartItem = ({ item }) => {
+const CartItem = ({ itemData }) => {
    return (
       <div className={s.item}>
          <img
             className={s.item_img}
-            src={item.image}
-            alt={item.title} />
+            src={itemData.image}
+            alt={itemData.title} />
 
          <div className={s.item_info}>
-            <p className={s.info_title}>{item.title}</p>
-            <p className={s.info_desc}>Nice t-shirt - some text for description. Nice t-shirt - some text for description. Nice t-shirt - some text for description</p>
-            <p className={s.info_price}>$ 10.00</p>
+            <p className={s.info_title}>{itemData.title}</p>
+            <p className={s.info_desc}>{itemData.description}</p>
+            <p className={s.info_price}>$ {itemData.price}</p>
          </div>
 
          <div className={s.item_ctrl}>
             <div className={s.item_qty}>
                <label htmlFor="qty">Quantity</label>
-               <input min="1" type="number" id="qty" name="qty" value="1" />
+               <input min="1" type="number" id="qty" name="qty" value={itemData.qty} />
             </div>
             <button className={s.ctrl_deleteBtn}>
                <img

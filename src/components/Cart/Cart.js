@@ -1,20 +1,16 @@
 import React from "react";
 import s from './Cart.module.scss'
-import testImg from '../../img/test-img.jpg'
-
+import { connect } from "react-redux";
 import CartItem from "./CartItem/CartItem";
 
-const item = {
-   image: testImg,
-   title: "T-shirt",
-   id: 1
-}
 
-const Cart = () => {
+const Cart = ({ cart }) => {
    return (
       <div className={s.cart}>
          <div className={s.cart_item}>
-            <CartItem key={item.id} item={item} />
+            {cart.map(item => (
+               <CartItem itemData={item} key={item.id} />
+            ))}
          </div>
          <div className={s.cart_sum}>
             <h4 className={s.sum_title}>Cart Summary</h4>
@@ -32,4 +28,10 @@ const Cart = () => {
    )
 }
 
-export default Cart
+const mapStateToProps = state => {
+   return {
+      cart: state.shop.cart
+   }
+}
+
+export default connect(mapStateToProps)(Cart)
