@@ -22,7 +22,7 @@ const Navigation = ({ cart }) => {
    return (
       <div className={s.nav}>
          <Link to="/">
-            <h2 className={s.nav_logo}>SHOPPING CART</h2>
+            <h2 className={s.nav_logo}>HOMEMADE GYM</h2>
          </Link>
          <Link to="/cart">
             <div className={s.nav_cart}>
