@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import s from './CartItem.module.scss';
 import deleteBtn from '../../../img/delete.svg'
 import { connect } from "react-redux";
-import { removeFromCart } from "../../../redux/Shopping/shopping-actions";
+import { removeFromCart, editQuantity } from "../../../redux/Shopping/shopping-actions";
 
-const CartItem = ({ itemData, removeFromCart }) => {
+const CartItem = ({ itemData, removeFromCart, editQuantity }) => {
+   const [input, setInput] = useState(itemData.qty)
+
+   const onQtyChange = (e) => {
+
+      setInput(+e.target.value <= 0 || e.target.value === '' ? '' : +e.target.value)
+      editQuantity(itemData.id, e.target.value)
+   }
    return (
       <div className={s.item}>
          <img
@@ -21,7 +28,13 @@ const CartItem = ({ itemData, removeFromCart }) => {
          <div className={s.item_ctrl}>
             <div className={s.item_qty}>
                <label htmlFor="qty">Quantity</label>
-               <input min="1" type="number" id="qty" name="qty" value={itemData.qty} />
+               <input
+                  min="1"
+                  type="number"
+                  id="qty"
+                  name="qty"
+                  value={input}
+                  onChange={onQtyChange} />
             </div>
             <button
                className={s.ctrl_deleteBtn}
@@ -36,10 +49,10 @@ const CartItem = ({ itemData, removeFromCart }) => {
    )
 }
 
-
 const mapDispatchToProps = dispatch => {
    return {
-      removeFromCart: (id) => dispatch(removeFromCart(id))
+      removeFromCart: (id) => dispatch(removeFromCart(id)),
+      editQuantity: (id, value) => dispatch(editQuantity(id, value))
    }
 }
 

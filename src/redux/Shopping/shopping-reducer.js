@@ -78,7 +78,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
             ...state,
             cart: inCart
                ? state.cart.map(item => item.id === action.payload.id
-                  ? { ...item, qty: item.qty + 1 }
+                  ? { ...item, qty: +item.qty + 1 }
                   : item)
                : [...state.cart, { ...item, qty: 1 }]
          }
@@ -90,7 +90,10 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       case actionTypes.EDIT_QUANTITY:
          return {
             ...state,
-            cart: state.cart.map(item => item.id === action.payload.id ? { ...item, qty: action.payload.qty } : item)
+            cart:
+               state.cart.map(item => item.id === action.payload.id
+                  ? { ...item, qty: +action.payload.qty <= 0 || action.payload.qty === '' ? '' : +action.payload.qty }
+                  : item)
          }
       case actionTypes.LOAD_CURRENT_ITEM:
          return {
