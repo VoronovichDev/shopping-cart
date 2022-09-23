@@ -1,9 +1,10 @@
 import React from "react";
 import s from './CartItem.module.scss';
 import deleteBtn from '../../../img/delete.svg'
-import tshirt from '../../../img/test-img.jpg'
+import { connect } from "react-redux";
+import { removeFromCart } from "../../../redux/Shopping/shopping-actions";
 
-const CartItem = ({ itemData }) => {
+const CartItem = ({ itemData, removeFromCart }) => {
    return (
       <div className={s.item}>
          <img
@@ -22,7 +23,9 @@ const CartItem = ({ itemData }) => {
                <label htmlFor="qty">Quantity</label>
                <input min="1" type="number" id="qty" name="qty" value={itemData.qty} />
             </div>
-            <button className={s.ctrl_deleteBtn}>
+            <button
+               className={s.ctrl_deleteBtn}
+               onClick={() => { removeFromCart(itemData.id) }}>
                <img
                   src={deleteBtn}
                   alt="delete item button"
@@ -33,4 +36,11 @@ const CartItem = ({ itemData }) => {
    )
 }
 
-export default CartItem
+
+const mapDispatchToProps = dispatch => {
+   return {
+      removeFromCart: (id) => dispatch(removeFromCart(id))
+   }
+}
+
+export default connect(null, mapDispatchToProps)(CartItem) 
