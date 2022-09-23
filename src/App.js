@@ -2,7 +2,8 @@ import React from "react";
 import {
    BrowserRouter as Router,
    Routes,
-   Route
+   Route,
+   Navigate
 } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigaton";
 import Products from "./components/Products/Products";
@@ -10,7 +11,9 @@ import Cart from "./components/Cart/Cart";
 import s from './App.module.scss'
 import SingelProduct from "./components/SingleProduct/SingelProduct";
 
-function App() {
+import { connect } from "react-redux"
+
+function App({ currentItem }) {
    return (
       <Router>
          <div>
@@ -18,11 +21,19 @@ function App() {
             <Routes>
                <Route path="/" element={<Products />} />
                <Route path="/cart" element={<Cart />} />
-               <Route path="/product/:id" element={<SingelProduct />} />
+               {!currentItem ? (
+                  <Route path="*" element={<Navigate to="/" replace />} />
+               ) : (<Route path="/product/:id" element={<SingelProduct />} />)}
             </Routes>
          </div>
       </Router>
    );
 }
 
-export default App;
+const mapStateToProps = state => {
+   return {
+      currentItem: state.shop.currentItem
+   }
+}
+
+export default connect(mapStateToProps)(App);
