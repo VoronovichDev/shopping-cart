@@ -9,6 +9,7 @@ const Products = ({ products }) => {
          {products.map((prod) => (
             <Product key={prod.id} productData={prod} />
          ))}
+
       </div>
    );
 };

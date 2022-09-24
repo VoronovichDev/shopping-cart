@@ -1,9 +1,8 @@
 import React from "react";
 import s from './SingleProduct.module.scss'
-import testImg from '../../img/test-img.jpg'
 
 import { connect } from "react-redux";
-import { addToCart } from "../../redux/Shopping/shopping-actions";
+import { addToCart } from "../../redux/Shopping/shopping-slice";
 
 const SingelProduct = ({ currentItem, addToCart }) => {
    return (
@@ -33,7 +32,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      addToCart: (id) => dispatch(addToCart(id))
+      addToCart: (id) => dispatch(addToCart({ id }))
    }
 }
 

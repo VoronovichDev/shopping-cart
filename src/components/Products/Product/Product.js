@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import s from "./Product.module.scss";
 
 import { connect } from 'react-redux'
-import { addToCart, loadCurrentItem } from '../../../redux/Shopping/shopping-actions'
+import { addToCart, loadCurrentItem } from '../../../redux/Shopping/shopping-slice'
 
 const Product = ({ productData, addToCart, loadCurrentItem }) => {
    return (
@@ -34,9 +34,10 @@ const Product = ({ productData, addToCart, loadCurrentItem }) => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      addToCart: (id) => dispatch(addToCart(id)),
+      addToCart: (id) => dispatch(addToCart({ id })),
       loadCurrentItem: (item) => dispatch(loadCurrentItem(item))
    }
 }
+// const mapDispatchToProps = { addToCart, loadCurrentItem }
 
 export default connect(null, mapDispatchToProps)(Product);
