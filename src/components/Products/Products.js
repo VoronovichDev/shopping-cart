@@ -1,9 +1,11 @@
 import React from "react";
 import s from "./Products.module.scss";
-import { connect } from "react-redux"
+import { useSelector } from "react-redux";
 import Product from "./Product/Product";
 
-const Products = ({ products }) => {
+const Products = () => {
+   const products = useSelector(state => state.shop.products)
+
    return (
       <div className={s.products}>
          {products.map((prod) => (
@@ -14,10 +16,4 @@ const Products = ({ products }) => {
    );
 };
 
-const mapStateToProps = (state) => {
-   return {
-      products: state.shop.products
-   }
-}
-
-export default connect(mapStateToProps)(Products);
+export default Products;

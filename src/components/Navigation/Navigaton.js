@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import s from "./Navigation.module.scss"
 import cartLogo from './../../img/cart.svg'
 
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 
-const Navigation = ({ cart }) => {
+const Navigation = () => {
+
+   const cart = useSelector(state => state.shop.cart)
 
    const [cartCount, setCartCount] = useState(0)
 
@@ -39,10 +41,4 @@ const Navigation = ({ cart }) => {
    )
 }
 
-const mapStateToProps = state => {
-   return {
-      cart: state.shop.cart
-   }
-}
-
-export default connect(mapStateToProps)(Navigation);
+export default Navigation;

@@ -2,10 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from "./Product.module.scss";
 
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCart, loadCurrentItem } from '../../../redux/Shopping/shopping-slice'
 
-const Product = ({ productData, addToCart, loadCurrentItem }) => {
+const Product = ({ productData }) => {
+
+   const dispatch = useDispatch()
+   const id = productData.id
+
    return (
       <div className={s.prod}>
          <img className={s.prod_img} src={productData.image} alt={productData.title} />
@@ -17,14 +21,14 @@ const Product = ({ productData, addToCart, loadCurrentItem }) => {
          </div>
 
          <div className={s.prod_btns}>
-            <Link to={`/product/${productData.id}`}>
+            <Link to={`/product/${id}`}>
                <button
-                  onClick={() => loadCurrentItem(productData)}
+                  onClick={() => dispatch(loadCurrentItem(productData))}
                   className={`${s.btns_btn} ${s.btns_view}`}>
                   View Item
                </button>
             </Link>
-            <button onClick={() => addToCart(productData.id)} className={`${s.btns_btn} ${s.btns_add}`}>
+            <button onClick={() => dispatch(addToCart({ id }))} className={`${s.btns_btn} ${s.btns_add}`}>
                Add To Cart
             </button>
          </div>
@@ -32,12 +36,4 @@ const Product = ({ productData, addToCart, loadCurrentItem }) => {
    );
 };
 
-const mapDispatchToProps = dispatch => {
-   return {
-      addToCart: (id) => dispatch(addToCart({ id })),
-      loadCurrentItem: (item) => dispatch(loadCurrentItem(item))
-   }
-}
-// const mapDispatchToProps = { addToCart, loadCurrentItem }
-
-export default connect(null, mapDispatchToProps)(Product);
+export default Product;

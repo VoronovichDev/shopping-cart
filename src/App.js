@@ -8,12 +8,12 @@ import {
 import Navigation from "./components/Navigation/Navigaton";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
-import s from './App.module.scss'
 import SingelProduct from "./components/SingleProduct/SingelProduct";
 
-import { connect } from "react-redux"
+import { useSelector } from "react-redux";
 
-function App({ currentItem }) {
+function App() {
+   const currentItem = useSelector(state => state.shop.currentItem)
    return (
       <Router>
          <div>
@@ -29,11 +29,4 @@ function App({ currentItem }) {
       </Router>
    );
 }
-
-const mapStateToProps = state => {
-   return {
-      currentItem: state.shop.currentItem
-   }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

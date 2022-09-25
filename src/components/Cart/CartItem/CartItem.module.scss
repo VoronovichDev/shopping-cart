@@ -3,6 +3,9 @@
    margin-bottom: 1rem;
    box-shadow: 0 2px 8px rgba(0, 114, 116, 0.5);
    border-radius: 10px;
+   background: -webkit-linear-gradient(45deg, rgb(232, 232, 232), rgb(229, 254, 255));
+   background: -moz-linear-gradient(45deg, rgb(232, 232, 232), rgb(229, 254, 255));
+   background: linear-gradient(45deg, rgb(232, 232, 232), rgb(229, 254, 255));
    &_img {
       flex: 1;
       max-width: 350px;
@@ -26,7 +29,6 @@
    }
    &_ctrl {
       flex: 0.5;
-
       width: 100%;
       justify-self: flex-end;
       display: flex;

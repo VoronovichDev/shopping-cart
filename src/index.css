@@ -4,6 +4,20 @@
    box-sizing: border-box;
    margin: 0;
    padding: 0;
+   scrollbar-width: auto;
+   scrollbar-color: #83e0e1 rgb(210, 229, 229);
+}
+*::-webkit-scrollbar {
+   width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+   background: rgb(210, 229, 229);
+}
+
+*::-webkit-scrollbar-thumb {
+   background-color: #007272;
+   border-radius: 10px;
 }
 a {
    text-decoration: none;
@@ -18,4 +32,10 @@ body {
 
 code {
    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+html {
+   background: -webkit-linear-gradient(45deg, rgb(196, 208, 205), rgb(178, 211, 212));
+   background: -moz-linear-gradient(45deg, rgb(196, 208, 205), rgb(178, 211, 212));
+   background: linear-gradient(45deg, rgb(196, 208, 205), rgb(178, 211, 212));
 }

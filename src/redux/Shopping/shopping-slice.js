@@ -83,19 +83,19 @@ const shopSlice = createSlice({
                ? { ...item, qty: +item.qty + 1 }
                : item)
             : [...state.cart, { ...item, qty: 1 }]
-
       },
       removeFromCart: (state, action) => {
          state.cart = state.cart.filter(item => item.id !== action.payload.id)
+
       },
       editQuantity: (state, action) => {
+
          state.cart =
-            state.cart.map(item => item.id === action.payload.data.id
-               ? { ...item, qty: +action.payload.data.qty <= 0 || action.payload.data.qty === '' ? '' : +action.payload.data.qty }
+            state.cart.map(item => item.id === action.payload.id
+               ? { ...item, qty: +action.payload.qty <= 0 || action.payload.qty === '' ? '' : +action.payload.qty }
                : item)
       },
       loadCurrentItem: (state, action) => {
-         console.log(action)
          state.currentItem = action.payload
       },
    }

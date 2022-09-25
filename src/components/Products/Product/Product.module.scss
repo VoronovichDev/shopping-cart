@@ -7,6 +7,9 @@
    gap: 15px;
    border-radius: 10px;
    margin: 0 15px 1rem 15px;
+   background: -webkit-linear-gradient(45deg, rgb(232, 232, 232), rgb(229, 254, 255));
+   background: -moz-linear-gradient(45deg, rgb(232, 232, 232), rgb(229, 254, 255));
+   background: linear-gradient(45deg, rgb(232, 232, 232), rgb(229, 254, 255));
    @media (max-width: 991px) {
       width: 700px;
    }
@@ -128,7 +131,7 @@
       color: #0a0700;
    }
    &_add {
-      background: #bae4e5;
+      background: #aae5e6;
       color: #0a0700;
    }
 }
