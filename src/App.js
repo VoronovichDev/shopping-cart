@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 function App() {
    const currentItem = useSelector(state => state.shop.currentItem)
    return (
-      <Router>
+      <Router basename="/shopping-cart/">
          <div>
             <Navigation />
             <Routes>
