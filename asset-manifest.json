@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.e8408ed3.css",
+    "main.js": "/shopping-cart/static/js/main.a176aea0.js",
+    "static/media/dumbbells.jpg": "/shopping-cart/static/media/dumbbells.2510bc7412b88319d930.jpg",
+    "static/media/kettlebell.jpg": "/shopping-cart/static/media/kettlebell.926c716347fcec28ceb5.jpg",
+    "static/media/barbell.jpg": "/shopping-cart/static/media/barbell.5df1a7f877b9fe57078b.jpg",
+    "static/media/hand_trainer.jpg": "/shopping-cart/static/media/hand_trainer.6101f11d0a69e6133707.jpg",
+    "static/media/home_bars.jpg": "/shopping-cart/static/media/home_bars.844ab74a92b9fdc1b06a.jpg",
+    "static/media/horizontal_bar.jpg": "/shopping-cart/static/media/horizontal_bar.8101f6ec6216f99e489e.jpg",
+    "static/media/treadmill.jpg": "/shopping-cart/static/media/treadmill.f3ea53dbf711696ba4f9.jpg",
+    "static/media/delete.svg": "/shopping-cart/static/media/delete.2872ea67b083848d8a9c9626debfb9db.svg",
+    "static/media/cart.svg": "/shopping-cart/static/media/cart.dba4e71f0d65b9ea0a54a46abd7e121e.svg",
+    "index.html": "/shopping-cart/index.html",
+    "main.e8408ed3.css.map": "/shopping-cart/static/css/main.e8408ed3.css.map",
+    "main.a176aea0.js.map": "/shopping-cart/static/js/main.a176aea0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e8408ed3.css",
+    "static/js/main.a176aea0.js"
+  ]
+}
